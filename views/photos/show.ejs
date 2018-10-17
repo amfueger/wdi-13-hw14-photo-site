@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/photos">Photos</a></li>
+
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<h1><%=photo.title%></h1>
+		<small>By: <a href="/photographers/<%=photographer.id%>"><%=photographer.name%></a></small>
+		<section>
+			<img src="<%=photo.img%>">
+		</section>
+		<section>
+			<a href="/photos/<%=photo.id%>/edit">Edit</a>
+		</section>
+		<section>
+			<form action="/photos/<%=photo._id%>?_method=DELETE" method="POST">
+				<input type="submit" name="Delete Photo">
+			</form>
+		</section>
+	</main>
+</body>
+</html>

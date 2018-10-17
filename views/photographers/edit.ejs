@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<header>
+		<h1>Edit <%=photographer.name%></h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/photographers">Photographers</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<h2>Photographer Info:</h2>
+		<form action="/photographers<%=photographer.id%>?_method=PUT" method="POST">
+			<input type="text" name="name" value="<%=photographer.name%>">
+			<button type="submit">Update Photographer</button>
+		</form>
+	</main>
+</body>
+</html>

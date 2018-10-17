@@ -28,23 +28,40 @@ router.get('/:id', (req, res) => {
 	});
 });
 
-// //GET - edit
-// router.get('/:id/edit', (req, res) => {
-	
-// });
+//GET - edit
+router.get('/:id/edit', (req, res) => {
+	Photographer.findById(req.params.id, (err, editPhotographer) => {
+		res.render('photographers/edit.ejs', {
+			photographer: editPhotographer
+		});
+	});
+});
 
-// //POST - create
-// router.post('/', (req, res) => {
-	
-// });
+//POST - create
+router.post('/', (req, res) => {
+	Photographer.create(req.body, (err, createdPhotographer) => {
+		if(err){
+			console.log(err, "err");
+		} else {
+			res.redirect('/photographers')
+		}
+	});
+});
+
+//PUT - update
+router.put('/:id', (req, res) => {
+	Photographer.findByIdAndUpdate(req.params.id, req.body, (err, updatePhotographer) => {
+		res.redirect('/photographers');
+	});
+});
+
 // //DELETE - destroy
 // router.delete('/:id', (req, res) => {
-	
+// 	Photographer.findOneAndDelete(req.params.id, (err, deletedPhotographer) => {
+		
+// 	})
 // });
-// //PUT - update
-// router.put('/:id', (req, res) => {
-	
-// });
+
 
 
 
