@@ -25,8 +25,8 @@
     <section>
       <h2>Photographer Photos:</h2>
       <ul>
-        <%for (let i = 0; i < author.photos.length; i++) {%>
-          <li><a href="/articles/<%=photographer.photos[i].id%>"><%=photographer.photos[i].title%></a></li>
+        <%for (let i = 0; i < photographer.photos.length; i++) {%>
+          <li><a href="/photographers/<%=photographer.photos[i].id%>"><%=photographer.photos[i].title%></a></li>
           <li><img src="/photos/<%=photographer.photos[i].id%>"></li>
        <% }%>
       </ul>

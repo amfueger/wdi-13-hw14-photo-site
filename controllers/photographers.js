@@ -8,7 +8,7 @@ const Photographer  = require('../models/photographers');
 //GET - index
 router.get('/', (req, res) => {
 		Photographer.find({}, (err, foundPhotographers) => {
-			res.render('photographers/index.ejs', {
+			res.render('./photographers/index.ejs', {
 				photographers: foundPhotographers
 			});
 		});
