@@ -15,17 +15,17 @@ router.get('/', (req, res) => {
 });
 //GET - new
 router.get('/new', (req, res) => {
-	Photo.find({}, (err, allPhotographers) => {
+	Photographer.find({}, (err, allPhotographers) => {
 		res.render('photos/new.ejs', {
 			photographers: allPhotographers
-		})
-	})
+		});
+	});
 });
 
 //GET - show
 router.get('/:id', (req, res) => {
 	Photo.findById(req.params.id, (err, foundPhoto) => {
-		Photographer.findOne({'photos._id': }, req.params.id, (err, foundPhotographer) => {
+		Photographer.findOne({'photos._id': req.params.id}, (err, foundPhotographer) => {
 			console.log(foundPhotographer, "foundPhotographer");
 			res.render('photos/show.ejs', {
 				photo: foundPhoto,
@@ -38,12 +38,19 @@ router.get('/:id', (req, res) => {
 //GET - edit
 router.get('/:id/edit', (req, res) => {
 	Photo.findById(req.params.id, (err, foundPhoto) => {
-		res.render('/photos.edit.ejs', {
-			photo: foundPhoto
-		})
-	})
+		Photographer.find({}, (err, allPhotographers) => {
+			Photographer.findOne({'photos._id': req.params.id}, (err, foundPhotoPhotopgraher) => {
+				res.render('photos/edit.ejs',{
+					photo: foundPhoto,
+					photographers: allPhotographers,
+					photoPhotographer: foundPhotoPhotopgraher
+					});
+				});
+			});
+		});
+	});
 });
-
+//
 //POST - create
 router.post('/', (req, res) => {
 	Photo.create(req.body, (err, createdPhoto) => {
@@ -52,11 +59,15 @@ router.post('/', (req, res) => {
 });
 //DELETE - destroy
 router.delete('/:id', (req, res) => {
-	
+	Photo.findByIdAndRemove(req.params.id, (err, deletePhoto) => {
+		res.direct('/photos')
+	})
 });
 //PUT - update
 router.put('/:id', (req, res) => {
-	
+	Photo.findByIdAndUpdate(req.params.id, req.body, (err, updatePhoto) => {
+		res.redirect('/photos')
+	});
 });
 
 

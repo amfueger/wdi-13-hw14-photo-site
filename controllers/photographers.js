@@ -23,7 +23,7 @@ router.get('/new', (req, res) => {
 router.get('/:id', (req, res) => {
 	Photographer.findById(req.params.id, (err, photographerFound) => {
 		res.render('photographers/show.ejs', {
-			photographers: photographerFound
+			photographer: photographerFound
 		});
 	});
 });
