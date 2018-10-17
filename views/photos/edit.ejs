@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<header>
+		<h1>Edit <%=photo.title%>'s Image</h1>
+			<nav>
+				<ul>
+					<li><a href="/"></a>Home</li>
+					<li><a href="/photos">All Photos</a></li>
+				</ul>
+			</nav>
+	</header>
+	<main>
+		<h2>Photo Information:</h2>
+		<form action="/photos/<%=photos.id%>?_method=PUT" method="POST">
+			<select name="photoID">
+				<%for(let i = 0; photographers.length; i++) {%>
+					<option value="<%=photographers[i].id%>"
+						<%if(photographers[i]._id.toString() === photoPhotographer._id.toString()){%>
+								selected
+							<%}%>
+						><%=photographers[i].name%></option>
+			</select>
+			<br/>
+			<input type="text" name="title" value="<%=photo.title%>"><br/>
+			<input type="text" name="img"><br/>
+			Current Image: 
+			<img src="<%=photo.img%>"><br/>
+			<input type="submit" name="Update Photo">
+		</form>
+	</main>
+</body>
+</html>
