@@ -12,6 +12,10 @@ app.use(methodOverride('_method'));
 //controllers added
 app.use('/photos', photosController);
 app.use('/photographers', photographersController);
+//route for index for photos and photographers
+app.get('/', (req, res) => {
+  res.render('index.ejs');
+});
 //hey listen
 app.listen(3000, () => {
   console.log('listening on port 3000');

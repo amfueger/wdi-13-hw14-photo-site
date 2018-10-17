@@ -1,9 +1,8 @@
 const express = require('express');
 const router  = express.Router();
+//Models communicating to the db
 const Photo = require('../models/photos');
 const Photographer  = require('../models/photographers');
-
-
 
 
 //GET - index
@@ -37,9 +36,6 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
 	
 });
-
-
-
 
 
 
