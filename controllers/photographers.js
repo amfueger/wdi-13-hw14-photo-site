@@ -7,20 +7,16 @@ const Photographer  = require('../models/photographers');
 
 //GET - index
 router.get('/', (req, res) => {
-		Photographer.create(req.body, (err, createPhotographer) => {
-			if (err){
-				console.log(err, "err");
-			} else {
-				res.redirect('/photographers')
-			}
+		Photographer.find({}, (err, foundPhotographers) => {
+			res.render('photographers/index.ejs', {
+				photographers: foundPhotographers
+			});
 		});
 	});
 
 // GET - new
 router.get('/new', (req, res) => {
-	res.render('./photographers/new.ejs', {
-		photographer: Photographer
-	});
+	res.render('./photographers/new.ejs')
 });
 
 // //GET - show
