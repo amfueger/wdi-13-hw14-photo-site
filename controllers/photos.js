@@ -37,12 +37,18 @@ router.get('/:id', (req, res) => {
 
 //GET - edit
 router.get('/:id/edit', (req, res) => {
-	
+	Photo.findById(req.params.id, (err, foundPhoto) => {
+		res.render('/photos.edit.ejs', {
+			photo: foundPhoto
+		})
+	})
 });
 
 //POST - create
 router.post('/', (req, res) => {
-	
+	Photo.create(req.body, (err, createdPhoto) => {
+		res.redirect('/photos')
+	});
 });
 //DELETE - destroy
 router.delete('/:id', (req, res) => {
