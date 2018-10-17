@@ -17,6 +17,7 @@
 		<ul>
 			<%for(let i = 0; i < photographers.length; i++){%>
 			<li><a href="/photographers/<%=photographers[i].id%>"><%=photographers[i].name%></a></li>
+			<li><%=photographers[i].location%></li>
 			<%}%>
 		</ul>
 	</main>

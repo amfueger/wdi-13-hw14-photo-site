@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <header>
+    <h1>This is <%=photographer.name%>'s page</h1>
+      <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/photographers">Author Index</a></li>
+            <li><a href="/photographers/<%=photographer.id%>/edit">Edit Photographer</a></li>
+         </ul>
+      </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Photographer Information:</h2>
+      <ul>
+        <li>Name: <%= photographer.name %></li>
+        <li>Location: <%=photographer.location%></li>
+      </ul>
+    </section>
+    <section>
+      <h2>Photographer Photos:</h2>
+      <ul>
+        <%for (let i = 0; i < author.photos.length; i++) {%>
+          <li><a href="/articles/<%=photographer.photos[i].id%>"><%=photographer.photos[i].title%></a></li>
+          <li><img src="/photos/<%=photographer.photos[i].id%>"></li>
+       <% }%>
+      </ul>
+    </section>
+    <section>
+      <form action="/photographers/<%=photo.id%>?_method=DELETE" method="POST" >
+        <input type="submit" value="Delete Photographer">
+      </form>
+    </section>
+  </main>
+</body>
+</html>

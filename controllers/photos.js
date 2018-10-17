@@ -24,7 +24,15 @@ router.get('/new', (req, res) => {
 
 //GET - show
 router.get('/:id', (req, res) => {
-	
+	Photo.findById(req.params.id, (err, foundPhoto) => {
+		Photographer.findOne({'photos._id': }, req.params.id, (err, foundPhotographer) => {
+			console.log(foundPhotographer, "foundPhotographer");
+			res.render('photos/show.ejs', {
+				photo: foundPhoto,
+				photographer: foundPhotographer
+			});
+		});
+	});
 });
 
 //GET - edit

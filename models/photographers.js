@@ -7,6 +7,7 @@ const photographerSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	location: String,
 	photo: [Photo.schema]
 });
 
