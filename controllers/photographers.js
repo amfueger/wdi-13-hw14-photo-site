@@ -55,12 +55,25 @@ router.put('/:id', (req, res) => {
 	});
 });
 
-// //DELETE - destroy
-// router.delete('/:id', (req, res) => {
-// 	Photographer.findOneAndDelete(req.params.id, (err, deletedPhotographer) => {
-		
-// 	})
-// });
+//DELETE - destroy
+router.delete('/:id', (req, res) => {
+	Photographer.findOneAndDelete(req.params.id, (err, deletedPhotographer) => {
+		//getting photo ids, for Article Collection
+		const photoIds = [];
+		for(let i = 0; i < deletedPhotographer.photos.length; i++){
+			photoIds.push(deletedPhotographer.articles[i].id);
+		}
+		//photoIds Should be filled with ids of photos we're deleting
+		console.log(photoIds, "photoIds");
+		Photo.deleteMany({
+			_id: {
+				$in: photoIds
+			}
+		}, (err, data) => {
+			res.redirect('/photographers')
+		});
+	});
+});
 
 
 
