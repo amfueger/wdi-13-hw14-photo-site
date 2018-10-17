@@ -19,10 +19,14 @@ router.get('/new', (req, res) => {
 	res.render('./photographers/new.ejs')
 });
 
-// //GET - show
-// router.get('/:id', (req, res) => {
-	
-// });
+//GET - show
+router.get('/:id', (req, res) => {
+	Photographer.findById(req.params.id, (err, photographerFound) => {
+		res.render('photographers/show.ejs', {
+			photographers: photographerFound
+		});
+	});
+});
 
 // //GET - edit
 // router.get('/:id/edit', (req, res) => {

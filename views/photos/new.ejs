@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create Photos with Photographers</title>
+  </head>
+  <body>
+    <header>
+      <h1>Add Photo!</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/photos">Photos Index</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <form action="/photos" method="POST">
+        <label>Photographers</label>
+        <br/>
+        <select name="photographerId">
+          <%for (let i = 0; i < photographers.length; i++){ %>
+               <option value="<%=photographers[i].id%>"><%=photographers[i].name%></option>
+          <%}%>
+        </select>
+        <br/>
+        <label for="">Title</label>
+        <br/>
+        <input type="text" name="title" /><br/>
+        <label for="">Image</label>
+        <br/>
+        <input name="img"></input><br/>
+        <input type="submit" value="Submit Photo"/>
+      </form>
+    </main>
+  </body>
+</html>

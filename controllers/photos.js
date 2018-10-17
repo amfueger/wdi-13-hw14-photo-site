@@ -7,11 +7,19 @@ const Photographer  = require('../models/photographers');
 
 //GET - index
 router.get('/', (req, res) => {
-	
+	Photo.find({}, (err, foundPhoto) => {
+		res.render('photos/index.ejs', {
+			photos: foundPhoto
+		});
+	});
 });
 //GET - new
 router.get('/new', (req, res) => {
-	
+	Photo.find({}, (err, allPhotographers) => {
+		res.render('photos/new.ejs', {
+			photographers: allPhotographers
+		})
+	})
 });
 
 //GET - show
