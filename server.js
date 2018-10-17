@@ -5,7 +5,7 @@ const methodOverride = require('method-override');
 require('./db/db');
 //declare controllers
 const photosController = require('./controllers/photos');
-const photographersController = require ('./controllers/photographers');
+const photographersController = require('./controllers/photographers');
 //middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Photographers</title>
+</head>
+<body>
+	<header>
+		<h1>Photographers</h1>
+			<nav>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/photographers/new">New Photographer</a></li>
+				</ul>
+			</nav>
+		</header>
+	<main>	
+		<ul>
+			<%for(let i = 0; i < photographers.length; i++){%>
+			<li><a href="/photographers/<%=photographers[i].id%>"><%=photographers[i].name%></a></li>
+			<%}%>
+		</ul>
+	</main>
+</body>
+</html>
