@@ -1,13 +1,4 @@
-const mongoose = require('mongoose');
-const Photo = require('./photos');
-
-
-const photographerSchema = new mongoose.Schema({
-	name: {
-		type: String,
-		required: true
-	},
-	photo: [Photo.schema]
-});
-
-module.exports = mongoose.model('Photographer', photographerSchema);
+const express = require('express');
+const router  = express.Router();
+const Photo = require('../models/photos');
+const Photographer  = require('../models/photographers');

@@ -1,11 +1,46 @@
-const mongoose = require('mongoose');
+const express = require('express');
+const router  = express.Router();
+const Photo = require('../models/photos');
+const Photographer  = require('../models/photographers');
 
-const photoSchema = new mongoose.Schema({
-	title: String,
-	img: {
-		type: String,
-		required: true
-	}
+
+
+
+//GET - index
+router.get('/', (req, res) => {
+	
+});
+//GET - new
+router.get('/new', (req, res) => {
+	
 });
 
-module.exports = mongoose.model('Photo', photoSchema);
+//GET - show
+router.get('/:id', (req, res) => {
+	
+});
+
+//GET - edit
+router.get('/:id/edit', (req, res) => {
+	
+});
+
+//POST - create
+router.post('/', (req, res) => {
+	
+});
+//DELETE - destroy
+router.delete('/:id', (req, res) => {
+	
+});
+//PUT - update
+router.put('/:id', (req, res) => {
+	
+});
+
+
+
+
+
+
+module.exports = router;
